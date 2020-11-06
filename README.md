@@ -5,7 +5,6 @@ This repository consists of the documentation of our model implementations and d
 Since the blank MobileNet model (random initialization) will cause overfitting, we tried MobileNet pre-trained on imagenet, froze its convolution layers, and retrained its fully connected layers on our data. Our data set is all the three tranches excluding the null and unknown values, with about 36k images. We trained on 30 thousand images with a 0.5 validation split and tested the model on the remaining 6 thousand. The model was trained on Google Colab. The results are as follows:
 
 ![mobilenet1](https://github.com/alan556022/Math499/blob/master/visuals/mobilenet1.png)
-
 ![mobilenet2](https://github.com/alan556022/Math499/blob/master/visuals/mobilenet2.png)
 
 ## Inception-ResNet v2
@@ -14,21 +13,19 @@ Similar to MobileNet, we used the same training, validation, and test set. And w
 
 ## MobileNet + Edge Detection
 We also implemented some preprocessing techniques. The edge detection code was from group 2. We combine the original image and the edge-detected image together into the training set. The following models were trained on the CARC system from USC. We tried MobileNet pre-trained on imagenet, first training on the original images. Then we trained the model on edge-detected images combined with original images to see if there is any improvement.
-### Original Images
 
+### Original Images
 ![mobilenet_edgedet1](https://github.com/alan556022/Math499/blob/master/visuals/mobilenet_edgedet1.png)
 
 ### Edge-detected + Original Images
-
 ![mobilenet_edgedet2](https://github.com/alan556022/Math499/blob/master/visuals/mobilenet_edgedet2.png)
 
 As a result, we don’t see considerable improvement in accuracy. It may be due to the following reasons: the convolutional layers are frozen or edge detection is not effective. In order to check the reason, we unfroze the convolutional layers in MobileNet and trained the model.
-### MobileNet Unfrozen Without Edge Detection
 
+### MobileNet Unfrozen Without Edge Detection
 ![mobilenet_edgedet3](https://github.com/alan556022/Math499/blob/master/visuals/mobilenet_edgedet3.png)
 
 ### MobileNet Unfrozen With Edge Detection
-
 ![mobilenet_edgedet1](https://github.com/alan556022/Math499/blob/master/visuals/mobilenet_edgedet4.png)
 
 Surprisingly, the accuracy increases as we unfroze the layers. The validation accuracy is now about 90%.
