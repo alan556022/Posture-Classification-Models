@@ -32,7 +32,7 @@ As a result, we don’t see considerable improvement in accuracy. It may be due 
 Surprisingly, the accuracy increases as we unfroze the layers. The validation accuracy is now about 90%.
 
 ## Summary Table
-<img src="https://github.com/alan556022/Math499/blob/master/visuals/summary.png" alt="summary" width="450"/>
+<img src="https://github.com/alan556022/Math499/blob/master/visuals/summary.png" alt="summary" width="800"/>
 
 ## [Other Visualizations](https://github.com/alan556022/Math499/blob/master/visualizations_doc.ipynb)
 We created some additional visualizations in the visualizations_doc.ipynb file linked. Our goal was to see if the distribution of images labeled occluded or not is significant, and if there are noticeble patterns dimensions of the images in relation to the image's primary_posture label.
