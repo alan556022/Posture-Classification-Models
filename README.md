@@ -25,12 +25,12 @@ As a result, we don’t see considerable improvement in accuracy. It may be due 
 
 Surprisingly, the accuracy increases as we unfroze the layers. The validation accuracy is now about 90%.
 
-# Summary Table
+## Summary Table
 ![https://github.com/alan556022/Math499/edit/master/visuals/summary.png]
 
-# Other Visualizations
+## Other Visualizations
 
-# Limitations and Improvements
+## Limitations and Improvements
 Ratio of the pictures was affected by posture and the amount of people. The pictures with standing had the highest ratio, followed by sitting and lying. The fewer the people, the higher the ratio Also, the non-occluded pictures had higher ratios as well.
 
 One of the improvements that our group found was dropping out the images with extreme ratios. This is because the outliers in picture ratios can dilute the actual results. Also, we found that object detitions could be a better improvement in results. Focusing on the center of the object, instead of the edges could lead to higher accuracy then the edge-detection system. Furthermore, taking a region of the graph instead of resizing the whole image could lead to a better accuracy. Finally, we decided we decided that we would split the loudness and/or number of people in the image for more complete data. 
