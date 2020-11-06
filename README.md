@@ -4,8 +4,8 @@ This repository consists of the documentation of our model implementations and d
 ## MobileNet
 Since the blank MobileNet model (random initialization) will cause overfitting, we tried MobileNet pre-trained on imagenet, froze its convolution layers, and retrained its fully connected layers on our data. Our data set is all the three tranches excluding the null and unknown values, with about 36k images. We trained on 30 thousand images with a 0.5 validation split and tested the model on the remaining 6 thousand. The model was trained on Google Colab. The results are as follows:
 
-<img src="https://github.com/alan556022/Math499/blob/master/visuals/mobilenet1_1.png" alt="drawing" width="200"/>
-![mobilenet2](https://github.com/alan556022/Math499/blob/master/visuals/mobilenet2.png)
+<img src="https://github.com/alan556022/Math499/blob/master/visuals/mobilenet1_1.png" alt="mobilenet1" width="500"/>
+<img src="https://github.com/alan556022/Math499/blob/master/visuals/mobilenet2.png" alt="mobilenet2" width="500"/>
 
 ## Inception-ResNet v2
 Similar to MobileNet, we used the same training, validation, and test set. And we froze the convolutional layers pre-trained on imagenet and retrained the fully connected layers. The model was trained on Google Colab. The results are as follows:
