@@ -16,7 +16,7 @@ Similar to MobileNet, we used the same training, validation, and test set. And w
 We also implemented some preprocessing techniques. The edge detection code was from group 2. We combine the original image and the edge-detected image together into the training set. The following models were trained on the CARC system from USC. We tried MobileNet pre-trained on imagenet, first training on the original images. Then we trained the model on edge-detected images combined with original images to see if there is any improvement.
 
 ### Original Images
-<img src="https://github.com/alan556022/Math499/blob/master/visuals/mobilenet_edgedet1.png" alt="mobilenet_edgedet1" width="450"/>
+<img src="https://github.com/alan556022/Math499/blob/master/visuals/mobilenet_edgedet.png" alt="mobilenet_edgedet1" width="450"/>
 
 ### Edge-detected + Original Images
 <img src="https://github.com/alan556022/Math499/blob/master/visuals/mobilenet_edgedet2.png" alt="mobilenet_edgedet2" width="450"/>
