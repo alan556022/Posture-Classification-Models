@@ -4,9 +4,9 @@ This repository consists of the documentation of our model implementations and d
 ## MobileNet
 Since the blank MobileNet model (random initialization) will cause overfitting, we tried MobileNet pre-trained on imagenet, froze its convolution layers, and retrained its fully connected layers on our data. Our data set is all the three tranches excluding the null and unknown values, with about 36k images. We trained on 30 thousand images with a 0.5 validation split and tested the model on the remaining 6 thousand. The model was trained on Google Colab. The results are as follows:
 
-![mobilenet1](https://github.com/alan556022/Math499/edit/master/visuals/mobilenet1.png)
+![mobilenet1](https://github.com/alan556022/Math499/blob/master/visuals/mobilenet1.png)
 
-![mobilenet2](https://github.com/alan556022/Math499/edit/master/visuals/mobilenet2.png)
+![mobilenet2](https://github.com/alan556022/Math499/blob/master/visuals/mobilenet2.png)
 
 ## Inception-ResNet v2
 Similar to MobileNet, we used the same training, validation, and test set. And we froze the convolutional layers pre-trained on imagenet and retrained the fully connected layers. The model was trained on Google Colab. The results are as follows:
@@ -16,11 +16,11 @@ Similar to MobileNet, we used the same training, validation, and test set. And w
 We also implemented some preprocessing techniques. The edge detection code was from group 2. We combine the original image and the edge-detected image together into the training set. The following models were trained on the CARC system from USC. We tried MobileNet pre-trained on imagenet, first training on the original images. Then we trained the model on edge-detected images combined with original images to see if there is any improvement.
 ### Original Images
 
-![mobilenet_edgedet1](https://github.com/alan556022/Math499/edit/master/visuals/mobilenet_edgedet1.png)
+![mobilenet_edgedet1](https://github.com/alan556022/Math499/blob/master/visuals/mobilenet_edgedet1.png)
 
 ### Edge-detected + Original Images
 
-![mobilenet_edgedet2](https://github.com/alan556022/Math499/edit/master/visuals/mobilenet_edgedet2.png)
+![mobilenet_edgedet2](https://github.com/alan556022/Math499/blob/master/visuals/mobilenet_edgedet2.png)
 
 As a result, we don’t see considerable improvement in accuracy. It may be due to the following reasons: the convolutional layers are frozen or edge detection is not effective. In order to check the reason, we unfroze the convolutional layers in MobileNet and trained the model.
 ### MobileNet Unfrozen Without Edge Detection
@@ -29,7 +29,7 @@ As a result, we don’t see considerable improvement in accuracy. It may be due 
 
 ### MobileNet Unfrozen With Edge Detection
 
-![mobilenet_edgedet1](https://github.com/alan556022/Math499/edit/master/visuals/mobilenet_edgedet4.png)
+![mobilenet_edgedet1](https://github.com/alan556022/Math499/blob/master/visuals/mobilenet_edgedet4.png)
 
 Surprisingly, the accuracy increases as we unfroze the layers. The validation accuracy is now about 90%.
 
@@ -37,7 +37,10 @@ Surprisingly, the accuracy increases as we unfroze the layers. The validation ac
 
 ![summary](https://github.com/alan556022/Math499/edit/master/visuals/summary.png)
 
-## Other Visualizations
+## ![Other Visualizations](https://github.com/alan556022/Math499/blob/master/visualizations_doc.ipynb)
+We created some additional visualizations in the visualizations_doc.ipynb file linked. Our goal was to see if the distribution of images labeled occluded or not is significant, and if there are noticeble patterns dimensions of the images in relation to the image's primary_posture label.
+
+Findings: The data is unbalanced in that the majority of the sample images are labeled with 'Standing', while the 'Lying' label is the smallest in terms of the number of pictures labeled with. Further, the majority of images labeled with 'Standing' have the highest height-to-width ratios, whereas those labeled with 'Lying' have the lowest. Additionally, although images that are not occluded seem to have higher height-to-width ratios than the occluded ones for 'Standing' and 'Sitting' labels, such a trend not longer holds for images labeled with 'Lying' probably because there are much fewer pictures labeled with 'Lying' than those labeled with 'Standing' or 'Sitting'. Furthermore, there exists a potential relationship between the number of people each image contains (from 0 to 3) and its height-to-width ratio: the more the people 1 picture contains, the lower its height-to-width ratio would be across all 3 postures labels ('Standing', 'Sitting', and 'Lying'). As a result, it might be worth splitting the data according the number of people (in each image) before preprocessing and then running them in a model.
 
 ## Limitations and Improvements
 Ratio of the pictures was affected by posture and the amount of people. The pictures with standing had the highest ratio, followed by sitting and lying. The fewer the people, the higher the ratio Also, the non-occluded pictures had higher ratios as well.
