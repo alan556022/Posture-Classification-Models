@@ -18,7 +18,7 @@ We also implemented some preprocessing techniques. The edge detection code was f
 ### Original Images
 <img src="https://github.com/alan556022/Posture-Classification-Models/blob/master/visuals/mobilenet_edgedet.png" alt="mobilenet_edgedet1" width="450"/>
 
-### [Edge-detected + Original Images](https://github.com/alan556022/Posture-Classification-Models/blob/master/MobileNet%2BEdgeDetection.h5)
+### [Edge-detected + Original Images](https://github.com/alan556022/Posture-Classification-Models/blob/master/MobileNet%2BEdgeDetection_Frozen.h5)
 <img src="https://github.com/alan556022/Posture-Classification-Models/blob/master/visuals/mobilenet_edgedet2.png" alt="mobilenet_edgedet2" width="450"/>
 
 As a result, we don’t see considerable improvement in accuracy. It may be due to the following reasons: the convolutional layers are frozen or edge detection is not effective. In order to check the reason, we unfroze the convolutional layers in MobileNet and trained the model.
@@ -26,7 +26,7 @@ As a result, we don’t see considerable improvement in accuracy. It may be due 
 ### MobileNet Unfrozen Without Edge Detection
 <img src="https://github.com/alan556022/Posture-Classification-Models/blob/master/visuals/mobilenet_edgedet3.png" alt="mobilenet_edgedet3" width="450"/>
 
-### [MobileNet Unfrozen With Edge Detection](https://github.com/alan556022/Posture-Classification-Models/blob/master/MobileNet-Edged-Ufrozen.h5)
+### [MobileNet Unfrozen With Edge Detection](https://github.com/alan556022/Posture-Classification-Models/blob/master/MobileNet-Edged-Unfrozen.h5)
 <img src="https://github.com/alan556022/Posture-Classification-Models/blob/master/visuals/mobilenet_edgedet4.png" alt="mobilenet_edgedet4" width="450"/>
 
 Surprisingly, the accuracy increases as we unfroze the layers. The validation accuracy is now about 90%.
