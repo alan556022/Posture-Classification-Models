@@ -1,7 +1,7 @@
 # Image Classification Models to Improve Posture Classifcation
 This repository consists of data visualizations and documentation of our model implementations for predicting postures of subjects in images. We also used have code to process videos to load into models for posture prediction.
 
-## MobileNet
+## [MobileNet](https://github.com/alan556022/Posture-Classification-Models/blob/master/MobileNetModel.h5)
 Since the blank MobileNet model (random initialization) will cause overfitting, we tried MobileNet pre-trained on imagenet, froze its convolution layers, and retrained its fully connected layers on our data. Our data set is all the three tranches excluding the null and unknown values, with about 36k images. We trained on 30 thousand images with a 0.5 validation split and tested the model on the remaining 6 thousand. The model was trained on Google Colab. The results are as follows:
 
 <img src="https://github.com/alan556022/Posture-Classification-Models/blob/master/visuals/mobilenet1_1.png" alt="mobilenet1" width="450"/>
