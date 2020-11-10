@@ -31,7 +31,7 @@ As a result, we don’t see considerable improvement in accuracy. It may be due 
 
 Surprisingly, the accuracy increases as we unfroze the layers. The validation accuracy is now about 90%.
 
-### [Processing Videos for Posture Prediction](https://github.com/alan556022/Math499/blob/master/Video_Cutting_andPrediction.ipynb)
+## [Processing Videos for Posture Prediction](https://github.com/alan556022/Math499/blob/master/Video_Cutting_andPrediction.ipynb)
 
 In this file, we process a video by cutting the video into individual frames as a list of images in order to make posture predictions. We can load any of the above models to make predictions.
 
