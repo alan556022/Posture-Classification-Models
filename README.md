@@ -1,5 +1,5 @@
 # Math499
-This repository consists of the documentation of our model implementations and data visualizations.
+This repository consists of data visualizations and documentation of our model implementations for predicting postures of subjects in images. We also used have code to process videos to load into models for posture prediction.
 
 ## MobileNet
 Since the blank MobileNet model (random initialization) will cause overfitting, we tried MobileNet pre-trained on imagenet, froze its convolution layers, and retrained its fully connected layers on our data. Our data set is all the three tranches excluding the null and unknown values, with about 36k images. We trained on 30 thousand images with a 0.5 validation split and tested the model on the remaining 6 thousand. The model was trained on Google Colab. The results are as follows:
@@ -7,7 +7,7 @@ Since the blank MobileNet model (random initialization) will cause overfitting, 
 <img src="https://github.com/alan556022/Math499/blob/master/visuals/mobilenet1_1.png" alt="mobilenet1" width="450"/>
 <img src="https://github.com/alan556022/Math499/blob/master/visuals/mobilenet2.png" alt="mobilenet2" width="450"/>
 
-## Inception-ResNet v2
+## [Inception-ResNet v2](https://github.com/alan556022/Math499/blob/master/inception_resnet_v2.py)
 Similar to MobileNet, we used the same training, validation, and test set. And we froze the convolutional layers pre-trained on imagenet and retrained the fully connected layers. The model was trained on Google Colab. The results are as follows:
 
 <img src="https://github.com/alan556022/Math499/blob/master/visuals/inceptionresnetv2.png" alt="inceptionresnetv2" width="450"/>
@@ -30,6 +30,10 @@ As a result, we don’t see considerable improvement in accuracy. It may be due 
 <img src="https://github.com/alan556022/Math499/blob/master/visuals/mobilenet_edgedet4.png" alt="mobilenet_edgedet4" width="450"/>
 
 Surprisingly, the accuracy increases as we unfroze the layers. The validation accuracy is now about 90%.
+
+### [Processing Videos for Posture Prediction](https://github.com/alan556022/Math499/blob/master/Video_Cutting_andPrediction.ipynb)
+
+In this file, we process a video by cutting the video into individual frames as a list of images in order to make posture predictions. We can load any of the above models to make predictions.
 
 ## Summary Table
 <img src="https://github.com/alan556022/Math499/blob/master/visuals/summary.png" alt="summary" width="800"/>
