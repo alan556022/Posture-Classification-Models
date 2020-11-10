@@ -1,4 +1,4 @@
-# Math499
+# Image Classification Models to Improve Posture Classifcation
 This repository consists of data visualizations and documentation of our model implementations for predicting postures of subjects in images. We also used have code to process videos to load into models for posture prediction.
 
 ## MobileNet
