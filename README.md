@@ -2,7 +2,7 @@
 This repository consists of data visualizations and documentation of our model implementations for predicting postures of subjects in images. We also used have code to process videos to load into models for posture prediction.
 
 ## [Exploratory Data Analysis](https://github.com/alan556022/Posture-Classification-Models/blob/master/visualizations_doc.ipynb)
-We created some additional visualizations in the visualizations_doc.ipynb file linked. Our goal was to see if the distribution of images labeled occluded or not is significant, and if there are noticeble patterns dimensions of the images in relation to the image's primary_posture label.
+We did some exploratory data analysis and created some  visualizations in the visualizations_doc.ipynb file linked. Our goal was to see if the distribution of images labeled occluded or not is significant, and if there are noticeble patterns dimensions of the images in relation to the image's primary_posture label.
 
 <img src="https://github.com/alan556022/Posture-Classification-Models/blob/master/visuals/posture_distribution.png" alt="stack bar of posture distribution" width="550"/>
 
