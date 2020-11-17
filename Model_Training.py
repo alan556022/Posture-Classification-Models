@@ -58,9 +58,10 @@ all_data.drop(all_data[all_data.primary_posture.isnull()].index, axis = 0, inpla
 from tensorflow.keras.preprocessing.image import ImageDataGenerator
 batch_size = 128
 epochs = 15
-IMG_HEIGHT = 299
-IMG_WIDTH = 299
-image_gen = ImageDataGenerator(rescale = 1./255, validation_split = 0.2)
+IMG_HEIGHT = 224
+IMG_WIDTH = 224
+image_gen = ImageDataGenerator(rescale = 1./255, validation_split = 0.2, rotation_range = 45, width_shift_range = 0.2,
+                                           height_shift_range = 0.2, horizontal_flip = True, vertical_flip = True)
 train_data_gen = image_gen.flow_from_dataframe(all_data, x_col = 'file_name', y_col = 'primary_posture',
                          batch_size = batch_size, shuffle = True, target_size = (IMG_HEIGHT, IMG_WIDTH), 
                          class_mode = 'categorical', subset = 'training')
@@ -71,7 +72,7 @@ validation_data_gen = image_gen.flow_from_dataframe(all_data, x_col = 'file_name
 
 
 #MobileNet pretrained on imagenet
-'''
+
 from tensorflow.keras.applications import EfficientNetB7, MobileNet
 base_model=MobileNet(weights='imagenet',input_shape = (224,224,3),include_top=False) #imports the mobilenet model and discards the last 1000 neuron layer.
 base_model.trainable = True
@@ -84,11 +85,11 @@ preds=Dense(3,activation='softmax')(x) #final layer with softmax activation
 model=Model(inputs=base_model.input,outputs=preds)
 model.compile(optimizer='Adam',loss='categorical_crossentropy',metrics=['accuracy'])
 model.summary()
-'''
+
 
 
 #Inception-V3 pretrained on imagenet
-
+'''
 from tensorflow.keras.applications import InceptionResNetV2, InceptionV3
 from tensorflow.keras.models import load_model 
 base_model=InceptionV3(weights='inception_v3_weights_tf_dim_ordering_tf_kernels_notop.h5',input_shape = (299,299,3),include_top=False)
@@ -104,7 +105,7 @@ model=Model(inputs=base_model.input,outputs=preds)
 
 model.compile(loss='categorical_crossentropy',optimizer='adam',metrics=['accuracy'])
 model.summary()
-
+'''
 
 hists = []
 callbacks = [EarlyStopping(monitor='val_loss', patience=10),
@@ -114,7 +115,7 @@ model.fit_generator(train_data_gen, steps_per_epoch = 28279//batch_size, epochs=
                     validation_steps = 7069//batch_size, callbacks=callbacks, verbose = 2)
 hists.append(model.history.history)
 
-model.save('InceptionV3-Unfrozen-Edged.h5')
+#model.save('Mobilenet-Unfrozen-Edged.h5')
 
 acc = []
 val_acc = []
