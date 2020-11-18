@@ -1,7 +1,7 @@
 # Image Classification Models to Improve Posture Classifcation
 This repository consists of data visualizations and documentation of our model implementations for predicting postures of subjects in images. We also used have code to process videos to load into models for posture prediction.
 
-## [Exploratory Data Analysis](https://github.com/alan556022/Posture-Classification-Models/blob/master/visualizations_doc.ipynb)
+## [Exploratory Data Analysis + Visualizations](https://github.com/alan556022/Posture-Classification-Models/blob/master/visualizations_doc.ipynb)
 We did some exploratory data analysis and created some  visualizations in the visualizations_doc.ipynb file linked. Our goal was to see if the distribution of images labeled occluded or not is significant, and if there are noticeble patterns dimensions of the images in relation to the image's primary_posture label.
 
 <img src="https://github.com/alan556022/Posture-Classification-Models/blob/master/visuals/posture_distribution.png" alt="stack bar of posture distribution" width="550"/>
@@ -16,6 +16,8 @@ As we can see, typically images labeled with 'Standing' have higher height-to-wi
 Overall Findings: The data is unbalanced in that the majority of the sample images are labeled with 'Standing', while the 'Lying' label is the smallest in terms of the number of pictures labeled with. Further, the majority of images labeled with 'Standing' have the highest height-to-width ratios, whereas those labeled with 'Lying' have the lowest. Additionally, although images that are not occluded seem to have higher height-to-width ratios than the occluded ones for 'Standing' and 'Sitting' labels, such a trend not longer holds for images labeled with 'Lying' probably because there are much fewer pictures labeled with 'Lying' than those labeled with 'Standing' or 'Sitting'. Furthermore, there exists a potential relationship between the number of people each image contains (from 0 to 3) and its height-to-width ratio: the more the people 1 picture contains, the lower its height-to-width ratio would be across all 3 postures labels ('Standing', 'Sitting', and 'Lying'). As a result, it might be worth splitting the data according the number of people (in each image) before preprocessing and then running them in a model.
 
 ## [MobileNet](https://github.com/alan556022/Posture-Classification-Models/blob/master/MobileNetModel.h5)
+Runtime for a single prediction: 3.12ms
+
 Since the blank MobileNet model (random initialization) will cause overfitting, we tried MobileNet pre-trained on imagenet, froze its convolution layers, and retrained its fully connected layers on our data. Our data set is all the three tranches excluding the null and unknown values, with about 36k images. We trained on 30 thousand images with a 0.5 validation split and tested the model on the remaining 6 thousand. The model was trained on Google Colab. The results are as follows:
 
 <img src="https://github.com/alan556022/Posture-Classification-Models/blob/master/visuals/mobilenet1_1.png" alt="mobilenet1" width="450"/>
@@ -27,6 +29,8 @@ Similar to MobileNet, we used the same training, validation, and test set. And w
 <img src="https://github.com/alan556022/Posture-Classification-Models/blob/master/visuals/inceptionresnetv2.png" alt="inceptionresnetv2" width="450"/>
 
 ## MobileNet + Edge Detection
+Runtime for a single prediction: 2.89ms
+
 We also implemented some preprocessing techniques. The edge detection code was from group 2. We combine the original image and the edge-detected image together into the training set. The following models were trained on the CARC system from USC. We tried MobileNet pre-trained on imagenet, first training on the original images. Then we trained the model on edge-detected images combined with original images to see if there is any improvement.
 
 ### Original Images
@@ -41,6 +45,8 @@ As a result, we don’t see considerable improvement in accuracy. It may be due 
 <img src="https://github.com/alan556022/Posture-Classification-Models/blob/master/visuals/mobilenet_edgedet3.png" alt="mobilenet_edgedet3" width="450"/>
 
 ### [MobileNet Unfrozen With Edge Detection](https://github.com/alan556022/Posture-Classification-Models/blob/master/MobileNet-Edged-Unfrozen.h5)
+Runtime for a single prediction: 2.90ms
+
 <img src="https://github.com/alan556022/Posture-Classification-Models/blob/master/visuals/mobilenet_edgedet4.png" alt="mobilenet_edgedet4" width="450"/>
 
 Surprisingly, the accuracy increases as we unfroze the layers. The validation accuracy is now about 90%.
